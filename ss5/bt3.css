@@ -1,0 +1,76 @@
+html {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+
+}
+
+/* Định kiểu cho bảng công việc */
+#todo-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#todo-list li {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 8px;
+    background-color: #f9f9f9;
+}
+
+#todo-list li:last-child {
+    border-bottom: none;
+}
+
+#todo-list li.completed {
+    background-color: #e6ffe6;
+}
+
+#todo-list button {
+    margin-left: auto;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Định kiểu cho các nút lọc */
+div {
+    margin-top: 10px;
+}
+
+div button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+/* Định kiểu cho các input */
+input[type="text"] {
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px 0;
+    width: calc(100% - 22px);
+}
+
+button {
+    padding: 5px 10px;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: #f0f0f0; /* Thay đổi màu nền khi di chuyển chuột qua nút */
+}
+
+#todo-list {
+    padding: 10px; /* Thêm khoảng cách bên trong giữa khung viền và nội dung */
+    margin-top: 20px; /* Thêm khoảng cách phía trên danh sách */
+}
+
+h1{
+    text-align: center;
+}

@@ -13,5 +13,4 @@ function typeConsole(type = "log") {
  typeConsole('error'); // In ra: Đây là type: error
  typeConsole('info'); // In ra: Đây là type: info
  typeConsole('debug'); // In ra: Đây là type: debug
- typeConsole('invalidType'); // In ra: Type không hợp lệ
- 
+ typeConsole('invalidType'); // In ra: Type không hợp lệ  

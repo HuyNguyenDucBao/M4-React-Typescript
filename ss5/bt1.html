@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trò Chơi Đoán Từ</title>
+    <link rel="stylesheet" href="/ss5/bt1.css">
+    <style>
+        #resetButton.show {
+            display: inline;
+        }
+        #resetButton.hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <p id="wordDisplay">Từ cần đoán: *****</p>
+        <p id="guessesRemaining">Số lần đoán còn lại: <span id="guessCount">5</span></p>
+        <input type="text" id="userGuess" maxlength="1" placeholder="Nhập một chữ cái" />
+        <button onclick="guessLetter()">Đoán</button>
+        <button id="resetButton" class="hide" onclick="resetGame()">Chơi Lại</button>
+    </div>
+    <script>
+        const wordsArray = ['mang', 'ngau', 'nhien', 'chu', 'doan'];
+        let selectedWord = wordsArray[Math.floor(Math.random() * wordsArray.length)];
+        let displayWord = '*'.repeat(selectedWord.length);
+        let guessCount = 5;
+
+        document.getElementById('wordDisplay').textContent = `Từ cần đoán: ${displayWord}`;
+
+        function guessLetter() {
+            const userGuess = document.getElementById('userGuess').value.toLowerCase();
+            if (userGuess && /^[a-z]$/.test(userGuess)) {
+                if (selectedWord.includes(userGuess)) {
+                    let newDisplay = '';
+                    for (let i = 0; i < selectedWord.length; i++) {
+                        newDisplay += (selectedWord[i] === userGuess) ? userGuess : displayWord[i];
+                    }
+                    displayWord = newDisplay;
+                    document.getElementById('wordDisplay').textContent = `Từ cần đoán: ${displayWord}`;
+                } else {
+                    guessCount--;
+                    document.getElementById('guessCount').textContent = guessCount;
+                }
+
+                if (displayWord === selectedWord) {
+                    alert('Chúc mừng! Bạn đã đoán đúng.');
+                    document.getElementById('resetButton').classList.remove('hide');
+                    document.getElementById('resetButton').classList.add('show');
+                } else if (guessCount === 0) {
+                    alert(`Hết lần đoán! Từ cần đoán là: ${selectedWord}`);
+                    document.getElementById('resetButton').classList.remove('hide');
+                    document.getElementById('resetButton').classList.add('show');
+                }
+            } else {
+                alert('Vui lòng nhập một chữ cái hợp lệ.');
+            }
+            document.getElementById('userGuess').value = '';
+        }
+
+        function resetGame() {
+            selectedWord = wordsArray[Math.floor(Math.random() * wordsArray.length)];
+            displayWord = '*'.repeat(selectedWord.length);
+            guessCount = 5;
+            document.getElementById('wordDisplay').textContent = `Từ cần đoán: ${displayWord}`;
+            document.getElementById('guessCount').textContent = guessCount;
+            document.getElementById('resetButton').classList.remove('show');
+            document.getElementById('resetButton').classList.add('hide');
+        }
+    </script>
+</body>
+</html>

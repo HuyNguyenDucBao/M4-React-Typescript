@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Trắc nghiệm</title>
+<style>
+  body { font-family: Arial, sans-serif; }
+  .container { width: 300px; margin: auto; }
+  .question { margin-bottom: 10px; }
+  .options { margin-bottom: 10px; }
+  .options label { margin-right: 10px; }
+  #replay, #result { display: none; }
+</style>
+<link rel="stylesheet" href="/ss5/bt2.css">
+
+</head>
+<body>
+<div class="container">
+  <div id="timer">Thời gian: <span id="time">15</span> giây</div>
+  <div class="question" id="question"></div>
+  <div class="options" id="options"></div>
+  <button id="next">Câu tiếp theo</button>
+  <button id="replay">Chơi lại</button>
+  <div id="result"></div>
+</div>
+
+<script>
+const questions = [
+  { question: "Ngày giải phóng miền Nam là ngày nào sau đây?", answer: ["27/4", "28/4", "29/4", "30/4"], correct: 3 },
+  { question: "Ai là người sáng lập Microsoft?", answer: ["Bill Gates", "Steve Jobs", "Mark Zuckerberg", "Elon Musk"], correct: 0 },
+  { question: "Công thức hóa học của nước là gì?", answer: ["H2O", "CO2", "CH4", "O2"], correct: 0 },
+  { question: "Thành phố nào là thủ đô của Việt Nam?", answer: ["Hà Nội", "Hồ Chí Minh", "Đà Nẵng", "Cần Thơ"], correct: 0 },
+  { question: "Đỉnh cao nhất thế giới là ngọn núi nào?", answer: ["Everest", "Kilimanjaro", "Elbrus", "Denali"], correct: 0 },
+  { question: "Loại vitamin nào cần thiết cho quá trình đông máu?", answer: ["Vitamin A", "Vitamin B", "Vitamin D", "Vitamin K"], correct: 3 },
+  { question: "Quốc gia nào có dân số lớn nhất thế giới?", answer: ["Ấn Độ", "Trung Quốc", "Mỹ", "Indonesia"], correct: 1 },
+  { question: "Loài động vật nào có thể sống cả trên cạn và dưới nước?", answer: ["Cá heo", "Cá sấu", "Ếch", "Chim cánh cụt"], correct: 2 }
+];
+let currentQuestion = 0;
+let score = 0;
+let timer;
+let timeLeft = 15;
+
+function displayQuestion() {
+  document.getElementById("question").textContent = questions[currentQuestion].question;
+  const options = questions[currentQuestion].answer.map((option, index) => {
+    return `<label><input type="radio" name="option" value="${index}"> ${option}</label>`;
+  });
+  document.getElementById("options").innerHTML = options.join("");
+}
+
+function nextQuestion() {
+  const selectedOption = document.querySelector('input[name="option"]:checked');
+  if (selectedOption && parseInt(selectedOption.value) === questions[currentQuestion].correct) {
+    score++;
+  }
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    displayQuestion();
+    resetTimer();
+  } else {
+    endGame();
+  }
+}
+
+function resetTimer() {
+  clearInterval(timer);
+  timeLeft = 15;
+  document.getElementById("time").textContent = timeLeft;
+  timer = setInterval(() => {
+    timeLeft--;
+    document.getElementById("time").textContent = timeLeft;
+    if (timeLeft <= 0) {
+      nextQuestion();
+    }
+  }, 1000);
+}
+
+function endGame() {
+  clearInterval(timer);
+  document.getElementById("result").textContent = "Kết quả: " + score + "/" + questions.length;
+  document.getElementById("result").style.display = "block";
+  document.getElementById("replay").style.display = "block";
+}
+
+document.getElementById("next").addEventListener("click", nextQuestion);
+document.getElementById("replay").addEventListener("click", () => {
+  currentQuestion = 0;
+  score = 0;
+  displayQuestion();
+  resetTimer();
+  document.getElementById("replay").style.display = "none";
+  document.getElementById("result").style.display = "none";
+});
+
+window.onload = () => {
+  displayQuestion();
+  resetTimer();
+};
+</script>
+</body>
+</html>

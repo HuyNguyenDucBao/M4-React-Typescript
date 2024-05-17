@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Ứng dụng ToDo</title>
+    <style>
+        /* Thêm CSS tại đây */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .completed {
+            text-decoration: line-through;
+        }
+    </style>
+    <link rel="stylesheet" href="/ss5/bt3.css">
+</head>
+
+<body>
+    <h1>TO DO LIST</h1>
+    <input type="text" id="new-todo" placeholder="Thêm công việc ở đây" />
+    <button onclick="addTodo()">Thêm</button>
+    <input type="text" id="search-todo" placeholder="Tìm kiếm công việc" onkeyup="searchTodo()" />
+
+    <div>
+        <button onclick="filterTodos('all')">Tất cả</button>
+        <button onclick="filterTodos('active')">Chưa hoàn thành</button>
+        <button onclick="filterTodos('completed')">Đã hoàn thành</button>
+    </div>
+
+    <ul id="todo-list">
+        <!-- Các công việc sẽ được thêm vào đây -->
+    </ul>
+
+    <script>
+        let todos = [];
+
+        function addTodo() {
+            const todoText = document.getElementById('new-todo').value;
+            if (todoText.trim() !== '') {
+                todos.push({ text: todoText, completed: false });
+                document.getElementById('new-todo').value = '';
+                renderTodos();
+            }
+        }
+
+        function deleteTodo(index) {
+            todos.splice(index, 1);
+            renderTodos();
+        }
+
+        function toggleComplete(index) {
+            todos[index].completed = !todos[index].completed;
+            renderTodos();
+        }
+
+        function filterTodos(status) {
+            renderTodos(status);
+        }
+
+        function searchTodo() {
+            renderTodos();
+        }
+
+        function renderTodos(filter = 'all') {
+            const search = document.getElementById('search-todo').value.toLowerCase();
+            const filteredTodos = todos.filter(todo => {
+                const matchesFilter = filter === 'all' || (filter === 'completed' && todo.completed) || (filter === 'active' && !todo.completed);
+                const matchesSearch = !search || todo.text.toLowerCase().includes(search);
+                return matchesFilter && matchesSearch;
+            });
+
+            const todoList = document.getElementById('todo-list');
+            todoList.innerHTML = '';
+            filteredTodos.forEach((todo, index) => {
+                const todoItem = document.createElement('li');
+                const todoText = document.createElement('span');
+                todoText.textContent = todo.text;
+                if (todo.completed) {
+                    todoText.classList.add('completed');
+                }
+                todoItem.appendChild(todoText);
+                todoItem.innerHTML += `
+            <button onclick="toggleComplete(${index})">Hoàn thành</button>
+            <button onclick="deleteTodo(${index})">Xóa</button>
+        `;
+                todoList.appendChild(todoItem);
+            });
+        }
+
+    </script>
+</body>
+
+</html>

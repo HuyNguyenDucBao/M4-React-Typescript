@@ -1,7 +1,9 @@
-function typeCheckDecorator(target, propertyKey, descriptor) {
+import 'reflect-metadata';
+
+function typeCheckDecorator(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     let originalMethod = descriptor.value;
 
-    descriptor.value = function (...args) {
+    descriptor.value = function (...args: any[]) {
         let methodSignature = Reflect.getMetadata("design:paramtypes", target, propertyKey);
 
         for (let i = 0; i < args.length; i++) {
@@ -16,14 +18,17 @@ function typeCheckDecorator(target, propertyKey, descriptor) {
     return descriptor;
 }
 
-class MyClass {
-    add(a, b) {
+class InClass {
+    @typeCheckDecorator
+    add(a: number, b: number): number {
         return a + b;
     }
 }
 
-MyClass.prototype.add = typeCheckDecorator(MyClass.prototype, 'add', Object.getOwnPropertyDescriptor(MyClass.prototype, 'add'));
-
-let myObject = new MyClass();
-console.log(myObject.add(5, 7));  // Output: 12
-console.log(myObject.add(5, "hello"));  // Throws Error: Argument type error: expected number but received string
+let inObject = new InClass();
+console.log(inObject.add(5, 7));  // Output: 12
+try {
+    console.log(inObject.add(5, "hello"));  // Throws Error: Argument type error: expected number but received string
+} catch (error) {
+    console.error(error.message);
+}

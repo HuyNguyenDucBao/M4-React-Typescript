@@ -1,0 +1,19 @@
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #f8f9fa;
+}
+
+.navbar a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid transparent;
+    transition: background-color 0.3s, border 0.3s;
+}
+
+.navbar a:hover {
+    background-color: gray;
+    border: 1px solid #ccc;
+}

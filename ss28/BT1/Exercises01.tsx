@@ -7,7 +7,7 @@ export default class Exercises01 extends Component<{}, StateType> {
   constructor(props: StateType) {
     super(props);
     this.state = {
-      name: "ai đó",
+      name: "Tên của bạn",
     };
   }
   render() {
@@ -17,4 +17,4 @@ export default class Exercises01 extends Component<{}, StateType> {
       </div>
     );
   }
-}
+} 

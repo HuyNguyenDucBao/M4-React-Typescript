@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng điểm</title>
+    <link rel="stylesheet" href="hakathon.css">
+</head>
+<body>
+    <div class="scoreboard">
+        <td class="header">
+            <h4>Players: <span id="playerCount">3</span></h2>
+            <h4>Total Points: <span id="totalPoints">0</span></h2>
+        </td>
+        <h1>SCOREBOARD</h1>
+        <table id="playerTable">
+            <tbody id="playerTableBody"></tbody>
+        </table>
+        <form id="addPlayerForm">
+            <input type="text" id="playerName" placeholder="Enter a player's name">
+            <button type="submit">ADD PLAYER</button>
+        </form>
+    </div>
+    <script src="hakathon.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-size: larger;
+
+}
+
+.scoreboard {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    width: 700px;
+    
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #008080;
+    font-size: 14px;
+}
+
+h4 {
+    color: #008080;
+    margin-top: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #008080;
+    margin-top: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.delete-btn {
+    background-color: transparent;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 10px;
+    padding-left: 80px;
+}
+
+.point {
+    padding-left: 200px;
+}
+
+.score-btn {
+    background-color: #008080;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    width: 30px;
+    height: 30px;
+    border-radius: 20%;
+}
+
+.score {
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+.crown {
+    font-size: 20px;
+    margin-left: 15px;
+    vertical-align:auto;
+    padding:0%;
+}
+
+#addPlayerForm {
+    margin-top: 20px;
+    display: flex;
+}
+
+#playerName {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #008080;
+    border-radius: 5px 0 0 5px;
+}
+
+#addPlayerForm button {
+    background-color: #008080;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+}
+
+#addPlayerForm button:hover {
+    background-color: #006666;
+}

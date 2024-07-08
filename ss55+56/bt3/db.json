@@ -1,0 +1,18 @@
+{
+    "id": 1,
+    "title": "Cách học ReactJS hiệu quả",
+    "thumbnail": "https://tsa.miền_bắt.vn/thế_giới_tui_NMLK_CVWQX_TạoKhácTínhCápNhật=api&api=1080",
+    "content": "Bài viết này nói về...",
+    "created_at": "23/03/2024",
+    "created_by": "Ngô Văn Quyết",
+    "user_id": 15,
+    "comments": [
+      {
+        "id": 1,
+        "content": "Bài viết rất hay và ý nghĩa.",
+        "created_at": "24/03/2024",
+        "user_id": 2
+      }
+    ]
+  }
+  

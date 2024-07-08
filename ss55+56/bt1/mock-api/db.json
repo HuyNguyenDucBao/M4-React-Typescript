@@ -1,0 +1,71 @@
+{
+    "products": [
+      {
+        "id": "1",
+        "name": "Product 1",
+        "price": 10,
+        "stock": 10,
+        "des": "nothing"
+      },
+      {
+        "id": "2",
+        "name": "Product 2",
+        "price": 10,
+        "stock": 10,
+        "des": "nothing"
+      },
+      {
+        "id": "3",
+        "name": "Product 3",
+        "price": 10,
+        "stock": 10,
+        "des": "nothing"
+      },
+      {
+        "id": "4",
+        "name": "Product 4",
+        "price": 10,
+        "stock": 10,
+        "des": "nothing"
+      },
+      {
+        "id": "5",
+        "name": "Product 5",
+        "price": 10,
+        "stock": 10,
+        "des": "nothing"
+      },
+      {
+        "id": 5,
+        "name": "Product 5",
+        "price": 10,
+        "stock": 10,
+        "des": "nothing"
+      }
+    ],
+    "user": [
+      {
+        "id": 1,
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "address": "123 Main St",
+        "cart": [
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Jane Smith",
+        "email": "jane.smith@example.com",
+        "address": "456 Elm St",
+        "cart": [
+          4,
+          3,
+          2
+        ]
+      }
+    ],
+    "cart": []
+  }

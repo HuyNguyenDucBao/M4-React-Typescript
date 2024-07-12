@@ -4,6 +4,7 @@
   "main": "index.js",
   "dependencies": {
     "api": "^6.1.2",
+    "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "json-server": "^0.17.1",
     "typescript": "^5.4.5"
